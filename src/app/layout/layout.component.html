@@ -1,0 +1,39 @@
+<td-layout>
+  <td-layout-nav-list #navList color="accent" 
+    [opened]="media.registerQuery('gt-sm') | async" 
+    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
+    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '300px' : '100%'">
+    <div td-sidenav-toolbar-content layout="row" layout-align="start center">
+      <mat-icon [routerLink]="['/']" class="mat-icon-logo cursor-pointer">public</mat-icon>
+      <span [routerLink]="['/']" class="cursor-pointer">岚川方圆</span>
+    </div>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <button mat-icon-button tdLayoutNavListOpen [hideWhenOpened]="true">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span>{{this.title}}</span>
+      <span flex></span>
+      <a mat-icon-button (click)="signoff()">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </div>
+    <mat-nav-list td-sidenav-content [tdLayoutNavListClose]="!media.query('gt-sm')">
+      <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
+        <a mat-list-item [routerLink]="[item.route]">
+          <mat-icon matListAvatar>{{item.icon}}</mat-icon>
+          <h3 matLine> {{item.title}} </h3>
+          <p matLine> {{item.description}} </p>
+        </a>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </ng-template>
+    </mat-nav-list>
+
+    <router-outlet></router-outlet>
+
+    <td-layout-footer>
+      <div layout="row" layout-align="start center">
+        <span class="mat-caption">Copyright &copy; 2018 岚川方圆. All rights reserved</span>
+      </div>
+    </td-layout-footer>
+  </td-layout-nav-list>
+</td-layout>

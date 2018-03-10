@@ -1,0 +1,26 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="80">
+    <mat-card>
+      <mat-card-content>
+          <div style="overflow:auto">
+        <table td-data-table>
+          <thead>
+            <tr td-data-table-column-row>
+              <th td-data-table-column *ngFor="let column of columns">
+                {{column.label}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr td-data-table-row *ngFor="let transaction of transactions">
+              <td td-data-table-cell *ngFor="let column of columns">
+                {{column.format ? column.format(transaction[column.name]) : transaction[column.name]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

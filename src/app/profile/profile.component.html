@@ -1,0 +1,55 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+  <div flex-gt-xs="80">
+    <mat-card>
+      <mat-card-content>
+        <form #loginForm="ngForm">
+          <div layout="row">
+            <mat-form-field flex>
+              <input type="text" matInput name="phone" [(ngModel)]="user.phone" disabled/>
+              <span matPrefix>
+                手机：
+              </span>
+            </mat-form-field>
+          </div>
+          <div layout="row">
+            <mat-form-field flex>
+              <input type="text" matInput name="name" [(ngModel)]="user.name" [disabled]="!changeState"/>
+              <span matPrefix>
+                姓名：
+              </span>
+            </mat-form-field>
+          </div>
+          <div layout="row">
+            <mat-form-field flex>
+              <input type="text" matInput name="id" [(ngModel)]="user.icn" [disabled]="!changeState"/>
+              <span matPrefix>
+                身份证：
+              </span>
+            </mat-form-field>
+          </div>
+          <div layout="row">
+            <mat-form-field flex>
+              <input type="text" matInput name="email" [(ngModel)]="user.email" [disabled]="!changeState"/>
+              <span matPrefix>
+                邮箱：
+              </span>
+            </mat-form-field>
+          </div>
+          <div layout="row">
+            <mat-form-field flex>
+              <input type="text" matInput name="address" [(ngModel)]="user.address" [disabled]="!changeState"/>
+              <span matPrefix>
+                地址：
+              </span>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" *ngIf="!changeState" (click)="change()">修改</button>
+        <button mat-raised-button color="primary" *ngIf="changeState"  (click)="save()">保存</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

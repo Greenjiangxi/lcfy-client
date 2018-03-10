@@ -1,0 +1,37 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="80">
+    <mat-card>
+      <mat-card-content>
+        <td-steps>
+          <td-step #step1 label="数量" sublabel="请确认购买数量({{project.unit}})" [active]="true" [state]="stepState1">
+            <ng-template td-step-label>
+              <span>数量</span>
+            </ng-template>
+            <mat-form-field flex>
+              <input matInput placeholder="数量" type="number" name="quantity" (ngModelChange)="changeQuantity()" [(ngModel)]="quantity"required>
+            </mat-form-field>
+          </td-step>
+          <td-step #step2 label="合同" sublabel="请阅读合同" [state]="stepState2">
+            <div class="md-padding">
+              土地使用协议书范本
+              甲方：    （以下简称甲方）?乙方：   （以下简称乙方）
+              为明确甲乙双方的权利和义务，经甲乙双方协商，本着互惠互利的原则达成以下协议： 一、使用范围和用途
+              甲方将    所属土地约  平方米的土地无偿提供给给乙方使用(土地面积以实际丈量为准)
+            </div>
+            <ng-template td-step-actions>
+              <button mat-raised-button color="primary" class="text-upper" (click)="confirmContract()" [disabled]="buttonDisabled2">同意</button>
+            </ng-template>
+          </td-step>
+          <td-step #step3 label="支付" sublabel="转入支付界面" [state]="stepState3" [disabled]="stepDisabled3">
+            <div class="md-padding">
+              总价格为:{{price}}元
+            </div>
+            <ng-template td-step-actions>
+              <button mat-raised-button color="primary" class="text-upper" (click)="pay()">支付</button>
+            </ng-template>
+          </td-step>
+        </td-steps>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

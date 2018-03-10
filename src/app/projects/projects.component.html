@@ -1,0 +1,21 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="80">
+    <mat-card *ngFor="let project of projects">
+      <mat-card-header>
+        <mat-card-title><h3>{{project.title}}</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{project.image}}">
+      <mat-card-content>
+        <div [innerHTML]="project.description"></div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <div class="md-padding">
+      <mat-progress-bar mode="determinate" value="{{project.boughtProgress}}"></mat-progress-bar>
+      <mat-hint>总购买数量:{{project.boughtQuantity}}/{{project.quantity}}{{project.unit}}</mat-hint>
+      </div>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" [routerLink]="['/project/' + project.id]" [disabled]="project.state != 'ACTIVE'">购买</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
