@@ -1,5 +1,5 @@
-<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
-    <div flex-gt-xs="80">
+<div layout="row" layout-align="center">
+    <div flex="100" flex-gt-sm="80">
     <mat-card>
       <mat-card-content>
           <div style="overflow:auto">
@@ -12,9 +12,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr td-data-table-row *ngFor="let transaction of transactions">
+            <tr td-data-table-row *ngFor="let log of logs">
               <td td-data-table-cell *ngFor="let column of columns">
-                {{column.format ? column.format(transaction[column.name]) : transaction[column.name]}}
+                {{log[column.name]}}
               </td>
             </tr>
           </tbody>

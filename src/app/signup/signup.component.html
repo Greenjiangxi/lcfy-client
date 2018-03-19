@@ -1,0 +1,33 @@
+<div layout="row" layout-align="center">
+  <div flex="100" flex-gt-sm="30">
+  <td-message [opened]="showError" label="{{error}}" color="warn" icon="error"></td-message>
+    <mat-card>
+      <mat-card-title>注册</mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div layout="column">
+          <mat-form-field>
+            <input matInput placeholder="请输入手机" type="text" maxlength="11" name="phone" [(ngModel)]="phone" required>
+            <mat-icon matPrefix>phone</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="请输入密码" type="text" name="password" [(ngModel)]="password" required>
+            <mat-icon matPrefix>lock</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="重新输入密码" type="text" name="rePassword" [(ngModel)]="rePassword" required>
+            <mat-icon matPrefix>lock</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
+            <mat-icon matPrefix>message</mat-icon>
+            <a matSuffix class="cursor-pointer" (click)="sendVc()">发送验证码</a>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="signup()">注册</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,9 +1,23 @@
-<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
-    <div flex-gt-xs="80">
-    <mat-card>
-      <mat-card-content>
-        正在完善...
-      </mat-card-content>
-    </mat-card>
+<div layout="row" layout-align="center">
+    <div flex="100" flex-gt-sm="30">
+        <td-message [opened]="showError" label="{{error}}" color="warn" icon="error"></td-message>
+        <mat-card>
+          <mat-card-content>
+            <mat-tab-group>
+              <mat-tab label="支付宝">
+                <div layout="column">
+                </div>
+              </mat-tab>
+              <mat-tab label="微信">
+                <div layout="column">
+                </div>
+              </mat-tab>
+              <mat-tab label="线下">
+                  <div layout="column">
+                  </div>
+                </mat-tab>
+            </mat-tab-group>
+          </mat-card-content>
+        </mat-card>
+    </div>
   </div>
-</div>

@@ -1,0 +1,22 @@
+<div layout="row" layout-align="center">
+  <div flex="100" flex-gt-sm="70">
+    <mat-card>
+      <mat-card-content>
+        <td-expansion-panel-group>
+          <td-expansion-panel *ngFor="let comodity of comodities" label="{{comodity.title}}" sublabel="{{comodity.quantity}}{{comodity.unit}}">
+            <div layout-padding>
+              <div>面积: {{comodity.quantity}}{{comodity.unit}}</div>
+              <div>价格: {{comodity.price}}元</div>
+              <div>所有者: {{comodity.owner}}</div>
+              <div>描述:</div>
+              <div [innerHTML]="comodity.description"></div>
+              <div>照片:</div>
+              <img src="{{comodity.image}}">
+              <button mat-raised-button color="primary" [routerLink]="['/comodities/' + comodity.id]">购买</button>
+            </div>
+          </td-expansion-panel>
+        </td-expansion-panel-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

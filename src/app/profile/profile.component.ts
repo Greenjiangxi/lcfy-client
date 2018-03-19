@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthHttp } from 'angular2-jwt';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +9,12 @@ export class ProfileComponent implements OnInit {
   user: any = {};
   changeState: boolean = false;
 
-  constructor(private authHttp: AuthHttp) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.authHttp.get("http://localhost:3000/profile").subscribe(
+    this.http.get("http://localhost:3000/profile").subscribe(
       response => {
-        this.user = response.json();
+        this.user = response;
       });
   }
 
@@ -23,10 +23,10 @@ export class ProfileComponent implements OnInit {
   }
 
   save(): void {
-    this.authHttp.put("http://localhost:3000/profile", JSON.stringify(this.user)).subscribe(
+    this.http.put("http://localhost:3000/profile", JSON.stringify(this.user)).subscribe(
       response => {
         this.changeState = false;
-        this.user = response.json();
+        this.user = response;
       });
   }
 }

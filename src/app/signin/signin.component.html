@@ -1,54 +1,44 @@
-<td-layout>
-  <td-layout-nav color="accent">
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <mat-icon [routerLink]="['/home']" class="mat-icon-logo cursor-pointer">public</mat-icon>
-      <span [routerLink]="['/home']" class="cursor-pointer">岚川方圆</span>
-      <span flex></span>
-      <a mat-icon-button [routerLink]="['/signin']">
-        <mat-icon>person</mat-icon>
-      </a>
-    </div>
-
-    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
-      <div flex-gt-xs="30">
-        <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
-          <mat-card-title>登录</mat-card-title>
-          <mat-divider></mat-divider>
-          <mat-card-content>
-            <form #loginForm="ngForm">
-              <div layout="row">
-                <mat-form-field flex>
-                  <input matInput placeholder="手机" type="text" maxlength="11" name="phone" [(ngModel)]="phone" required>
-                  <span matPrefix>
-                    <mat-icon>phone</mat-icon>
-                  </span>
-                </mat-form-field>
+<div layout="row" layout-align="center">
+  <div flex="100" flex-gt-sm="30">
+    <td-message [opened]="showError" label="{{error}}" color="warn" icon="error"></td-message>
+    <mat-card>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="密码登录">
+            <div layout="column">
+              <mat-form-field>
+                <input matInput placeholder="手机" type="text" maxlength="11" name="phone" [(ngModel)]="phone" required>
+                <mat-icon matPrefix>phone</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="密码" type="text" name="password" [(ngModel)]="password" required>
+                <mat-icon matPrefix>lock</mat-icon>
+              </mat-form-field>
+              <div layout-margin>
+                <button mat-raised-button color="primary" (click)="signinPw()">登录</button>
+                <a mat-button [routerLink]="['/signup']">注册</a>
               </div>
-
-              <div layout="row">
-                <mat-form-field flex=60>
-                  <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
-                  <span matPrefix>
-                    <mat-icon>message</mat-icon>
-                  </span>
-                </mat-form-field>
-                <button flex=30 style="margin:10px" mat-raised-button color="accent" (click)="sendVc()">发送</button>
+            </div>
+          </mat-tab>
+          <mat-tab label="验证码登录">
+            <div layout="column">
+              <mat-form-field>
+                <input matInput placeholder="手机" type="text" maxlength="11" name="phone" [(ngModel)]="phone" required>
+                <mat-icon matPrefix>phone</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
+                <mat-icon matPrefix>message</mat-icon>
+                <a matSuffix class="cursor-pointer" (click)="sendVc()">发送验证码</a>
+              </mat-form-field>
+              <div layout-margin>
+                <button mat-raised-button color="primary" (click)="signinVc()">登录</button>
+                <a mat-button [routerLink]="['/signup']">注册</a>
               </div>
-            </form>
-          </mat-card-content>
-          <mat-divider></mat-divider>
-          <mat-error>{{error}}</mat-error>
-          <mat-card-actions layout="row">
-            <button flex mat-raised-button color="primary" (click)="signin()">登录</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-
-    <td-layout-footer>
-      <div layout="row" layout-align="start center">
-        <span class="mat-caption">Copyright &copy; 2017 岚川方圆. All rights reserved</span>
-      </div>
-    </td-layout-footer>
-  </td-layout-nav>
-</td-layout>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

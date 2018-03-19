@@ -1,0 +1,20 @@
+<td-layout>
+  <td-layout-nav color="accent">
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <mat-icon [routerLink]="['/home']" class="mat-icon-logo cursor-pointer">public</mat-icon>
+      <span [routerLink]="['/home']" class="cursor-pointer">岚川方圆</span>
+      <span flex></span>
+      <a mat-icon-button [routerLink]="['/signin']">
+        <mat-icon>person</mat-icon>
+      </a>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <td-layout-footer>
+      <div layout="row" layout-align="start center">
+        <span class="mat-caption">Copyright &copy; 2018 岚川方圆. All rights reserved</span>
+      </div>
+    </td-layout-footer>
+  </td-layout-nav>
+</td-layout>

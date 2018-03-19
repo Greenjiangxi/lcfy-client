@@ -1,47 +1,29 @@
-<td-layout>
-  <td-layout-nav color="accent">
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <mat-icon [routerLink]="['/home']" class="mat-icon-logo cursor-pointer">public</mat-icon>
-      <span [routerLink]="['/home']" class="cursor-pointer">岚川方圆</span>
-      <span flex></span>
-      <a mat-icon-button [routerLink]="['/signin']">
-        <mat-icon>person</mat-icon>
-      </a>
-    </div>
+<div layout="row" layout-align="center">
+    <div flex="100" flex-gt-sm="70">
+    <mat-card>
+      <mat-card-content>
+        <h2>岚川方圆 - 以区块链作为底层登记技术，以生态作为基本产业依据，以扶贫作为项目发展目的</h2>
+        <p>方圆，是一个基于分布式加密的区块链系统，可以为土地权益交易提供一种全新的解决方案。方圆从当前土地权益交易的痛点入手，通过开源，透明的操作规则，为构建一个可落地的区块链产品提供支持。</p>
+        <img mat-card-image src="http://s4.51cto.com/oss/201802/28/ba2ce36ee2ca2924f7a1f35f0885bb7a.jpg-wh_651x-s_2850146352.jpg">
+        <mat-divider></mat-divider>
+        <h2>区块链解决方案</h2>
+        <td-expansion-panel label="简化土地权益交易双方搜索流程">
+          <p class="md-padding">区块链技术可以提高这一过程中的效率和信用。区块链可以详细记录土地位置、环境，乃至交易率、历届所有者和管理者等细节，让市场参与者以更低的成本获得更可靠的数据。以区块链技术打造的土地权益交易平台，支持土地的透明化和流动化交易，全程交易透明化，同时实现对等交易，防止高出市场价的租金落入中介手中。</p>
+        </td-expansion-panel>
+        <td-expansion-panel label="降低土地租、售之前的调查成本">
+          <p class="md-padding">区块链可以提升这一过程的效率和准确性，土地权益交易的参与者可以添加数字身份，并且将市场参与者的信息和一些特征加入到数字身份内。借助区块链技术的特征，这些记录将不可篡改，这一过程可以将财务、法律等信息简化，并缩短尽职调查过程。</p>
+        </td-expansion-panel>
+        <td-expansion-panel label="简化土地租、售之后的资产管理问题">
+          <p class="md-padding">区块链则可以用“智能合约”的形式使财产和资产的管理更容易、透明、有效。智能合约是一系列数字化的承诺，其中规定着各方对承诺执行。如果在区块链平台上使用智能交易合同，可以实现交易期限和交易的透明，同时合同可以让租金自动支付给所有者、管理者和其他利益相关者。</p>
+        </td-expansion-panel>
+        <td-expansion-panel label="减少土地交易不准确的决策">
+          <p class="md-padding">区块链技术可以让数据链接起来，进而提高决策和分析的质量。将土地权益交易中的其他参与者之间连接，为所有相关方提供共享的数据库。这将提高数据质量，并让数据更容易记录和检索</p>
+        </td-expansion-panel>
+        <td-expansion-panel label="提高融资和支付处理效率">
+          <p class="md-padding">区块链则可以将买卖双方详细信息、交易费用，交易时间等包括在智能合约内。交易双方交易通过网络完成，因此结算流程可以更加无缝。通过密码验证资金可用性并促进资金同步转移，提高流程的稳健性。通过这种方式，可以最大限度地降低结算风险和支付延迟。</p>
+        </td-expansion-panel>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
-    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
-      <div flex-gt-xs="80">
-        <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
-          <mat-card-content>
-            <h2>岚川方圆 - 以区块链作为基本登记技术，以生态作为基本产业依据，以扶贫作为项目发展目的</h2>
-            <p>方圆，是一个基于分布式加密的区块链系统，可以为土地权益交易提供一种全新的解决方案。方圆从当前土地权益交易的痛点入手，通过开源，透明的操作规则，为构建一个可落地的区块链产品提供支持。</p>
-            <img mat-card-image src="http://s4.51cto.com/oss/201802/28/ba2ce36ee2ca2924f7a1f35f0885bb7a.jpg-wh_651x-s_2850146352.jpg">
-            <mat-divider></mat-divider>
-            <h2>区块链解决方案</h2>
-            <td-expansion-panel label="简化土地权益交易双方搜索流程">
-              <p class="md-padding">区块链技术可以提高这一过程中的效率和信用。区块链可以详细记录土地位置、环境，乃至交易率、历届所有者和管理者等细节，让市场参与者以更低的成本获得更可靠的数据。以区块链技术打造的土地权益交易平台，支持土地的透明化和流动化交易，全程交易透明化，同时实现对等交易，防止高出市场价的租金落入中介手中。</p>
-            </td-expansion-panel>
-            <td-expansion-panel label="降低土地租、售之前的调查成本">
-              <p class="md-padding">区块链可以提升这一过程的效率和准确性，土地权益交易的参与者可以添加数字身份，并且将市场参与者的信息和一些特征加入到数字身份内。借助区块链技术的特征，这些记录将不可篡改，这一过程可以将财务、法律等信息简化，并缩短尽职调查过程。</p>
-            </td-expansion-panel>
-            <td-expansion-panel label="简化土地租、售之后的资产管理问题">
-              <p class="md-padding">区块链则可以用“智能合约”的形式使财产和资产的管理更容易、透明、有效。智能合约是一系列数字化的承诺，其中规定着各方对承诺执行。如果在区块链平台上使用智能交易合同，可以实现交易期限和交易的透明，同时合同可以让租金自动支付给所有者、管理者和其他利益相关者。</p>
-            </td-expansion-panel>
-            <td-expansion-panel label="减少土地交易不准确的决策">
-              <p class="md-padding">区块链技术可以让数据链接起来，进而提高决策和分析的质量。将土地权益交易中的其他参与者之间连接，为所有相关方提供共享的数据库。这将提高数据质量，并让数据更容易记录和检索</p>
-            </td-expansion-panel>
-            <td-expansion-panel label="提高融资和支付处理效率">
-              <p class="md-padding">区块链则可以将买卖双方详细信息、交易费用，交易时间等包括在智能合约内。交易双方交易通过网络完成，因此结算流程可以更加无缝。通过密码验证资金可用性并促进资金同步转移，提高流程的稳健性。通过这种方式，可以最大限度地降低结算风险和支付延迟。</p>
-            </td-expansion-panel>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-
-    <td-layout-footer>
-      <div layout="row" layout-align="start center">
-        <span class="mat-caption">Copyright &copy; 2018 岚川方圆. All rights reserved</span>
-      </div>
-    </td-layout-footer>
-  </td-layout-nav>
-</td-layout>

@@ -3,10 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
-import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideAuth } from 'angular2-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { CovalentCommonModule } from '@covalent/core/common';
 import { CovalentSearchModule } from '@covalent/core/search';
@@ -20,6 +19,7 @@ import { CovalentMenuModule } from '@covalent/core/menu';
 import { CovalentPagingModule } from '@covalent/core/paging';
 import { CovalentStepsModule } from '@covalent/core/steps';
 import { CovalentExpansionPanelModule } from '@covalent/core/expansion-panel';
+import { CovalentMessageModule } from '@covalent/core/message';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -37,50 +37,84 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
+import { LayoutHomeComponent } from './layout-home/layout-home.component';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { ComoditiesComponent } from './comodities/comodities.component';
+import { PropertiesComponent } from './properties/properties.component';
 import { TradeComponent } from './trade/trade.component';
-import { TransactionsComponent } from './transactions/transactions.component';
 import { PaymentComponent } from './payment/payment.component';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutHomeComponent,
     HomeComponent,
     SigninComponent,
+    SignupComponent,
     LayoutComponent,
     ProfileComponent,
-    ProjectsComponent,
+    ComoditiesComponent,
+    PropertiesComponent,
     TradeComponent,
-    TransactionsComponent,
-    PaymentComponent
+    PaymentComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        whitelistedDomains: ['localhost:3000']
+      }
+    }),
     AppRoutingModule,
-    CovalentDataTableModule, CovalentMediaModule, CovalentLoadingModule,
-    CovalentNotificationsModule, CovalentLayoutModule, CovalentMenuModule,
-    CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
-    CovalentCommonModule, CovalentDialogsModule, CovalentExpansionPanelModule,
-    MatButtonModule, MatCardModule, MatIconModule,
-    MatListModule, MatDividerModule, MatMenuModule, MatTooltipModule,
-    MatSlideToggleModule, MatInputModule, MatCheckboxModule,
-    MatToolbarModule, MatSnackBarModule, MatSidenavModule,
-    MatTabsModule, MatSelectModule, MatRadioModule, MatProgressBarModule
+    CovalentDataTableModule,
+    CovalentMediaModule,
+    CovalentLoadingModule,
+    CovalentNotificationsModule, 
+    CovalentLayoutModule, 
+    CovalentMenuModule,
+    CovalentPagingModule, 
+    CovalentSearchModule, 
+    CovalentStepsModule,
+    CovalentCommonModule, 
+    CovalentDialogsModule, 
+    CovalentExpansionPanelModule,
+    CovalentMessageModule,
+    MatButtonModule, 
+    MatCardModule, 
+    MatIconModule,
+    MatListModule, 
+    MatDividerModule, 
+    MatMenuModule, 
+    MatTooltipModule,
+    MatSlideToggleModule, 
+    MatInputModule, 
+    MatCheckboxModule,
+    MatToolbarModule, 
+    MatSnackBarModule, 
+    MatSidenavModule,
+    MatTabsModule, 
+    MatSelectModule, 
+    MatRadioModule, 
+    MatProgressBarModule,
+    MatStepperModule
   ],
-  providers: [provideAuth({
-    tokenName: 'token'
-  })],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

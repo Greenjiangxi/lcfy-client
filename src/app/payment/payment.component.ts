@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-payment',
@@ -8,7 +8,7 @@ import { AuthHttp } from 'angular2-jwt';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private authHttp: AuthHttp) {};
+  constructor(private http: HttpClient) {};
 
 	ngOnInit() {
   }

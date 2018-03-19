@@ -4,21 +4,23 @@
       <mat-card-content>
         <mat-vertical-stepper [linear]="true" #stepper="matVerticalStepper">
           <mat-step>
-            <ng-template matStepLabel>请再次确认购买信息</ng-template>
+            <ng-template matStepLabel>请确认发布信息</ng-template>
             <div layout-padding>
-              <div>面积: {{comodity.quantity}}{{comodity.unit}}</div>
-              <div>价格: {{comodity.price}}元</div>
-              <div>所有者: {{comodity.owner}}</div>
+              <div>面积: {{property.quantity}}{{property.unit}}</div>
+              <div>购买价格: {{property.price}}元</div>
               <div>描述:</div>
-              <div [innerHTML]="comodity.description"></div>
+              <div [innerHTML]="property.description"></div>
               <button color="primary" mat-raised-button matStepperNext>确认</button>
             </div>
 
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>请阅读合同</ng-template>
+            <ng-template matStepLabel>请确认价格</ng-template>
             <div layout-padding>
-              <img src="http://img.wenjiwu.com/170615/1497494341.gif;">
+                <mat-form-field>
+                    <input matInput placeholder="新的价格" type="number" name="price" [(ngModel)]="price" required>
+                    <mat-icon matPrefix>attach_money</mat-icon>
+                  </mat-form-field>
               <button color="primary" mat-raised-button matStepperNext>同意</button>
             </div>
 
