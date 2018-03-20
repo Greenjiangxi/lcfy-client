@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --host 0.0.0.0",
-    "prod": "ng serve --prod --host 0.0.0.0 --aot false --build-optimizer false --extract-licenses false --environment prod"
+    "prod": "ng serve --prod --host 0.0.0.0 --aot false --build-optimizer false --extract-licenses false --disable-host-check true --environment prod"
   },
   "private": true,
   "dependencies": {
