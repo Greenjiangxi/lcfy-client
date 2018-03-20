@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get("http://localhost:3000/profile").subscribe(
+    this.http.get(env.url + "profile").subscribe(
       response => {
         this.user = response;
       });
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
   }
 
   save(): void {
-    this.http.put("http://localhost:3000/profile", JSON.stringify(this.user)).subscribe(
+    this.http.put(env.url + "profile", JSON.stringify(this.user)).subscribe(
       response => {
         this.changeState = false;
         this.user = response;

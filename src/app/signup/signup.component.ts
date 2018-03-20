@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 interface TokenResponse {
   token: string;
@@ -21,7 +22,7 @@ export class SignupComponent {
   ) {};
 
   signin(): void {
-    this.http.post<TokenResponse>("http://localhost:3000/signin", JSON.stringify({phone: this.phone, vc: this.vc})).subscribe(
+    this.http.post<TokenResponse>(env.url + "signin", JSON.stringify({phone: this.phone, vc: this.vc})).subscribe(
       response => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/comodities']);
@@ -29,7 +30,7 @@ export class SignupComponent {
   };
 
   sendVc(): void {
-    this.http.post("http://localhost:3000/send_vc", JSON.stringify({phone: this.phone})).subscribe(
+    this.http.post(env.url + "send_vc", JSON.stringify({phone: this.phone})).subscribe(
         response => {
         });
   }

@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng serve --prod --host 0.0.0.0 --aot false --build-optimizer false --extract-licenses false"
+    "dev": "ng serve --host 0.0.0.0",
+    "prod": "ng serve --prod --host 0.0.0.0 --aot false --build-optimizer false --extract-licenses false --environment prod"
   },
   "private": true,
   "dependencies": {

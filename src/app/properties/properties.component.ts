@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ITdDataTableColumn } from '@covalent/core/data-table';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class PropertiesComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get("http://localhost:3000/properties").subscribe(
+    this.http.get(env.url + "properties").subscribe(
       response => {
         this.properties = response;
       })

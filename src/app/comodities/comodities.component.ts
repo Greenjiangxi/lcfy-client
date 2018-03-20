@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 @Component({
   selector: 'app-comodities',
@@ -12,7 +13,7 @@ export class ComoditiesComponent implements OnInit {
   constructor(private http: HttpClient) {};
 
   ngOnInit() {
-    this.http.get("http://localhost:3000/comodities").subscribe(
+    this.http.get(env.url + "comodities").subscribe(
       response => {
         this.comodities = response;
       })

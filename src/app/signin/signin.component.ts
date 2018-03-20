@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 interface TokenResponse {
   token: string;
@@ -22,7 +23,7 @@ export class SigninComponent {
   ) {};
 
   signinPw(): void {
-    this.http.post<TokenResponse>("http://localhost:3000/signin_pw", JSON.stringify({phone: this.phone, password: this.password})).subscribe(
+    this.http.post<TokenResponse>(env.url + "signin_pw", JSON.stringify({phone: this.phone, password: this.password})).subscribe(
       response => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/comodities']);
@@ -35,7 +36,7 @@ export class SigninComponent {
   };
 
   signinVc(): void {
-    this.http.post<TokenResponse>("http://localhost:3000/signin_vc", JSON.stringify({phone: this.phone, vc: this.vc})).subscribe(
+    this.http.post<TokenResponse>(env.url + "signin_vc", JSON.stringify({phone: this.phone, vc: this.vc})).subscribe(
       response => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/comodities']);
@@ -48,7 +49,7 @@ export class SigninComponent {
   };
 
   sendVc(): void {
-    this.http.post("http://localhost:3000/send_vc", JSON.stringify({phone: this.phone})).subscribe(
+    this.http.post(env.url + "send_vc", JSON.stringify({phone: this.phone})).subscribe(
       response => {
       },
       error => {

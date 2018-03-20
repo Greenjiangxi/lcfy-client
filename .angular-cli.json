@@ -20,6 +20,11 @@
         "styles.scss",
         "theme.scss"
       ],
+      "environmentSource": "env/env.ts",
+      "environments": {
+        "dev": "env/env.ts",
+        "prod": "env/env.prod.ts"
+      },
       "scripts": []
     }
   ],

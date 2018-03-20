@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StepState } from '@covalent/core/steps';
 import { HttpClient } from '@angular/common/http';
+import { env } from '../../env/env';
 
 @Component({
 	selector: 'app-publish',
@@ -18,21 +19,21 @@ export class PublishComponent implements OnInit {
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.get("http://localhost:3000/properties/" + id).subscribe(
+    this.http.get(env.url + "properties/" + id).subscribe(
       response => {
         this.property = response;
       });
   }
 
   sendVc(): void {
-    this.http.post("http://localhost:3000/send_vc", JSON.stringify({})).subscribe(
+    this.http.post(env.url + "send_vc", JSON.stringify({})).subscribe(
         response => {
         });
   }
 
   publish(): void {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.put("http://localhost:3000/properties/" + id, JSON.stringify({
+    this.http.put(env.url + "properties/" + id, JSON.stringify({
       property_id: this.property.id, 
       action: '发布',
       vc: this.vc,
