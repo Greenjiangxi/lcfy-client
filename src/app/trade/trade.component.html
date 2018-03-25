@@ -18,7 +18,7 @@
           <mat-step>
             <ng-template matStepLabel>请阅读合同</ng-template>
             <div layout-padding>
-              <img src="http://img.wenjiwu.com/170615/1497494341.gif;">
+              <img mat-card-image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3263785486,2556365849&fm=27&gp=0.jpg">
               <button color="primary" mat-raised-button matStepperNext>同意</button>
             </div>
 
@@ -26,22 +26,15 @@
           <mat-step>
             <ng-template matStepLabel>转入支付</ng-template>
             <div layout="column">
-              <div flex="60" flex-gt-sm="20">
-                <mat-form-field>
-                  <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
-                  <mat-icon matPrefix>message</mat-icon>
-                  <a matSuffix class="cursor-pointer" (click)="sendVc()">发送验证码</a>
-                </mat-form-field>
-              </div>
-              <div flex="60" flex-gt-sm="20">
-                <button color="primary" mat-raised-button (click)="pay()">支付</button>
-              </div>
+              <mat-form-field>
+                <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
+                <mat-icon matPrefix>message</mat-icon>
+                <a matSuffix class="cursor-pointer" (click)="sendVc()">发送验证码</a>
+              </mat-form-field>
+              <button color="primary" mat-raised-button (click)="pay()">支付</button>
             </div>
           </mat-step>
         </mat-vertical-stepper>
-
-
-
       </mat-card-content>
     </mat-card>
   </div>

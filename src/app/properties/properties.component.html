@@ -5,14 +5,15 @@
           <td-expansion-panel-group>
             <td-expansion-panel *ngFor="let property of properties" label="{{property.title}}" sublabel="{{property.quantity}}{{property.unit}}">
               <div layout-padding>
-                <div>面积: {{property.quantity}}{{property.unit}}</div>
-                <div>价格: {{property.price}}元</div>
-                <div>所有者: {{property.owner}}</div>
-                <div>描述:</div>
-                <div [innerHTML]="property.description"></div>
-                <div>照片:</div>
-                <img src="{{property.image}}">
-                <button mat-raised-button color="primary" [routerLink]="['/properties/' + property.id]">发布</button>
+                  <div><h3>{{property.title}}</h3></div>
+                  <div>面积: {{property.quantity}}{{property.unit}}</div>
+                  <div>价格: {{property.price}}元</div>
+                  <div>描述:</div>
+                  <div [innerHTML]="property.description"></div>
+                  <div>照片:</div>
+                  <div flex><img mat-card-image src="{{property.img}}"></div>
+                <button *ngIf="property.state == 'DEACTIVE'" mat-raised-button color="primary" (click)="openPublishConfirm()">发布</button>
+                <button *ngIf="property.state == 'ACTIVE'" mat-raised-button color="primary" disabled>已发布</button>
               </div>
             </td-expansion-panel>
           </td-expansion-panel-group>

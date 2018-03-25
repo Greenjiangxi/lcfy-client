@@ -16,22 +16,37 @@ export class SignupComponent {
   password: string;
   rePassword: string;
   vc: string;
+  showError: boolean = false;
+  error: string;
 
   constructor(private router: Router,
     private http: HttpClient
   ) {};
 
-  signin(): void {
-    this.http.post<TokenResponse>(env.url + "signin", JSON.stringify({phone: this.phone, vc: this.vc})).subscribe(
+  signup(): void {
+    if (this.password != this.rePassword) {
+      this.error = '两次密码不一致';
+      this.showError = true;
+      return;
+    }
+    this.http.post<TokenResponse>(env.url + "signup", JSON.stringify({phone: this.phone, passowrd: this.password, vc: this.vc})).subscribe(
       response => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/comodities']);
+      },
+      error => {
+        this.error = error.error._error;
+        this.showError = true;
       });
   };
 
   sendVc(): void {
     this.http.post(env.url + "send_vc", JSON.stringify({phone: this.phone})).subscribe(
         response => {
+        },
+        error => {
+          this.error = error.error._error;
+          this.showError = true;
         });
   }
 }

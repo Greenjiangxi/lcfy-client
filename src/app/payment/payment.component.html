@@ -6,14 +6,26 @@
             <mat-tab-group>
               <mat-tab label="支付宝">
                 <div layout="column">
+                    <div layout-padding>
+                      <img mat-card-image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521990656122&di=9c12f60d00f3110930ea30ccdc010d3d&imgtype=0&src=http%3A%2F%2Fs8.sinaimg.cn%2Fmw690%2F005y99Npzy77Zb1upbpa7%26690">
+                    </div>
                 </div>
               </mat-tab>
               <mat-tab label="微信">
                 <div layout="column">
+                    <div layout-padding>
+                        <img mat-card-image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521990787900&di=c8fc015c72d4f77f37e022ad0434396d&imgtype=0&src=http%3A%2F%2Fpic127.nipic.com%2Ffile%2F20170319%2F20829800_195558385033_2.jpg">
+                      </div>
                 </div>
               </mat-tab>
               <mat-tab label="线下">
                   <div layout="column">
+                    <h4>付款后请工作人员为您发送验证码</h4>
+                      <mat-form-field>
+                          <input matInput placeholder="验证码" type="text" name="vc" [(ngModel)]="vc" required>
+                          <mat-icon matPrefix>message</mat-icon>
+                        </mat-form-field>
+                        <button color="primary" mat-raised-button (click)="confirm()">确认</button>
                   </div>
                 </mat-tab>
             </mat-tab-group>
