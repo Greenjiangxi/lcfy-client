@@ -12,6 +12,7 @@ import { PropertiesComponent } from './properties/properties.component';
 import { TradeComponent } from './trade/trade.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LogsComponent } from './logs/logs.component';
+import { TokenComponent } from './token/token.component';
 
 const routes: Routes = [
     { path: '',   redirectTo: 'home', pathMatch: 'full' },
@@ -30,7 +31,11 @@ const routes: Routes = [
             {
                 path: 'signup',
                 component: SignupComponent,
-            }
+            },
+            {
+                path: 'token/:id',
+                component: TokenComponent,
+            },
         ],
     },
     {

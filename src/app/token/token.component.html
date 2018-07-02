@@ -1,0 +1,117 @@
+<div layout="row" layout-align="center">
+  <div flex="100" flex-gt-sm="70">
+    <mat-card>
+      <mat-card-content>
+        <div layout="row">
+          <div align="center" flex="20">
+            <img style="width:60px;height:60px" src="{{token.icon}}">
+
+            <div layout-padding>{{token.title}}</div>
+          </div>
+          <div align="center" flex="20"><div layout-padding class="tc-grey-600">价格(元)</div><h2 class="tc-red-600">{{token.price}}</h2></div>
+          <div align="center" flex="20"><div layout-padding class="tc-grey-600">成交量</div><h2>{{token.volumn}}</h2></div>
+          <div align="center" flex="20"><div layout-padding class="tc-grey-600">成交额(元)</div><h2>{{token.amount}}</h2></div>
+          <div align="center" flex="20" *ngIf="token.trend == 0" class="tc-green-600"><div layout-margin class="tc-grey-600">涨跌</div><h2>{{token.change}}%</h2></div>
+          <div align="center" flex="20" *ngIf="token.trend == 1" class="tc-red-600"><div layout-margin class="tc-grey-600">涨跌</div><h2>{{token.change}}%</h2></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              权证介绍
+            </ng-template>
+            <div layout-padding [innerHTML]="token.description"></div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              价格趋势
+            </ng-template>
+            <div style="width:1200px;height:600px">
+                <ngx-charts-line-chart 
+                [view]="view" 
+                [scheme]="colorScheme"
+                [results]="trend"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis">
+              </ngx-charts-line-chart>
+
+            </div> 
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              交易记录
+            </ng-template>
+            <div style="overflow:auto">
+              <table td-data-table>
+                <thead>
+                  <tr td-data-table-column-row>
+                    <th td-data-table-column *ngFor="let column of columns">
+                      {{column.label}}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr td-data-table-row *ngFor="let transaction of transactions">
+                    <td td-data-table-cell *ngFor="let column of columns">
+                        <div *ngIf="column.name == 'date'">{{transaction.date | date: 'yyy-MM-dd HH:mm'}}</div>
+                      <div *ngIf="column.name == 'from'">{{transaction.from}}</div>
+                      <div class="tc-green-600" *ngIf="column.name == 'action' && transaction.action == 'SELL'">卖出</div>
+                      <div class="tc-red-600" *ngIf="column.name == 'action' && transaction.action == 'BUY'">买入</div>
+                      <div class="tc-orange-600" *ngIf="column.name == 'action' && transaction.action == 'EXCHANGE'">交割</div>
+                      <div *ngIf="column.name == 'price'">{{transaction.price}}</div>
+                      <div *ngIf="column.name == 'volumn'">{{transaction.volumn}}</div>
+                      <div *ngIf="column.name == 'amount'">{{transaction.amount}}</div>   
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              权证操作
+            </ng-template>
+            <div layout="row">
+            <mat-card flex="33">
+                <mat-card-content>
+                    <h2 class="tc-green-600">买入</h2>
+                    <div layout-margin>价格：{{token.price}}</div>
+                      <div layout-margin>最大买入量：1000</div>
+                              <div layout-margin>买入数量：<input type="text"></div>
+                              <div layout-margin>手续费：0.01%</div>
+                              <button mat-raised-button color="primary">买入</button>
+                </mat-card-content>
+              </mat-card>
+
+              <mat-card flex="33">
+                  <mat-card-content>
+                    <h2 class="tc-red-600">卖出</h2>
+                    <div layout-margin>价格：{{token.price}}</div>
+                      <div layout-margin>拥有数量：--</div>
+                              <div layout-margin>买出数量：<input type="text"></div>
+                              <div layout-margin>手续费：0.02%</div>
+                              <button mat-raised-button color="warn">卖出</button>
+  
+                  </mat-card-content>
+                </mat-card>
+
+                <mat-card flex="33">
+                    <mat-card-content>
+                        <h2 class="tc-orange-600">交割</h2>
+                        <div layout-margin>规则：1权证 = 2.3瓶土豆酒</div>
+                          <div layout-margin>拥有数量：--</div>
+                                  <div layout-margin>交割数量：<input type="text"></div>
+                                  <div layout-margin>手续费：0.00%</div>
+                                  <button mat-raised-button color="accent">交割</button>
+                    </mat-card-content>
+                  </mat-card>
+                  </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

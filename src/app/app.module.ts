@@ -40,6 +40,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 import { AppComponent } from './app.component';
 import { LayoutHomeComponent } from './layout-home/layout-home.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +54,7 @@ import { PropertiesComponent } from './properties/properties.component';
 import { TradeComponent } from './trade/trade.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LogsComponent } from './logs/logs.component';
+import { TokenComponent } from './token/token.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,8 @@ import { LogsComponent } from './logs/logs.component';
     PropertiesComponent,
     TradeComponent,
     PaymentComponent,
-    LogsComponent
+    LogsComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,8 @@ import { LogsComponent } from './logs/logs.component';
     MatSelectModule, 
     MatRadioModule, 
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

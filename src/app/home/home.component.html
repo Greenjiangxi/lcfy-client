@@ -1,13 +1,46 @@
 <div layout="row" layout-align="center">
     <div flex="100" flex-gt-sm="70">
+        <mat-card>
+            <mat-card-content>
+                <div layout="row">
+                    <div layout-margin><img style="width:400px;height:250px" src="http://pic3.16pic.com/00/00/42/16pic_42302_b.jpg"></div>
+                    <div layout-margin><img style="width:400px;height:250px" src="http://pic.58pic.com/58pic/17/07/54/21n58PICdmh_1024.jpg"></div>
+                    <div layout-margin><img style="width:400px;height:250px" src="http://pic.qiantucdn.com/58pic/21/68/94/72f58PICkGJ_1024.jpg"></div>
+                  </div>
+            </mat-card-content>
+        </mat-card>
     <mat-card>
       <mat-card-content>
-        <h2>岚川方圆 - 以区块链作为底层登记技术，以生态作为基本产业依据，以扶贫作为项目发展目的</h2>
-        <p>皖西大别山地林茶区位于安徽省西南部的大别山区东段，是大别山区山地资源的主体集中区域。该地区属于北亚热带温湿季风区，气候温暖湿润，降水充沛。拥有丰富的水电、药材、茶叶、蚕桑、野生动物以及森林资源，是安徽省第二大林茶基地。</p>
-        <img mat-card-image src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=2acb745dd539b60059c307e588395e4f/b90e7bec54e736d1102bfbb69b504fc2d5626957.jpg">
-        <mat-divider></mat-divider>
-        <p>岚川方圆，是一个基于分布式加密的区块链系统，可以为土地流转提供一种全新的解决方案。方圆从当前土地流转的痛点入手，通过开源，透明的操作规则，为构建一个可落地的区块链产品提供支持。</p>
-        <img mat-card-image src="http://s4.51cto.com/oss/201802/28/ba2ce36ee2ca2924f7a1f35f0885bb7a.jpg-wh_651x-s_2850146352.jpg">
+   
+        <div style="overflow:auto">
+          <h1>交易中心</h1>
+        <table td-data-table>
+          <thead>
+            <tr td-data-table-column-row>
+              <th td-data-table-column *ngFor="let column of columns">
+                {{column.label}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr td-data-table-row class="cursor-pointer" (click)="gotoToken(token.id)" *ngFor="let token of tokens">
+              <td td-data-table-cell *ngFor="let column of columns">
+                <div *ngIf="column.name == 'type'">
+                  <div layout="row">
+                    <div><img src="{{token.icon}}"></div>
+                    <div layout-margin class="tc-grey-600">{{token.title}}</div>
+                  </div>
+                </div>
+                <div *ngIf="column.name == 'price'">{{token.price}}</div>
+                <div *ngIf="column.name == 'volumn'">{{token.volumn}}</div>
+                <div *ngIf="column.name == 'amount'">{{token.amount}}</div>
+                <div *ngIf="column.name == 'change' && token.trend == 0" class="tc-green-600">{{token.change}}%</div>
+                <div *ngIf="column.name == 'change' && token.trend == 1" class="tc-red-600">{{token.change}}%</div>    
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
  
       </mat-card-content>
     </mat-card>
